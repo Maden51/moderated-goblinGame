@@ -6,6 +6,8 @@ body {
     color:#999;
     margin: 0;
     height: 100%;
+    cursor: none;
+    overflow: hidden;
 }
 
 .board-container {
@@ -23,11 +25,7 @@ body {
 }
 
 .cell {
-    position: relative;
     border: 1px solid black;
-}
-
-.map-tile {
     width: var(--cell-size);
     height: var(--cell-size);
 }
@@ -35,9 +33,40 @@ body {
 .goblin {
     width: var(--cell-size);
     height: var(--cell-size);
-    position: absolute;
     z-index: 99;
-    background: url('../img/goblin.png');
+    background-image: url('../img/goblin.png');
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.scoresbox {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.scores, .misses {
+    padding: 5px;
+    margin: 5px;
+    font-size: 26px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.hide {
+    display: none;
+}
+
+.cursor {
+    background-image: url(../img/tor_cursor.png);
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    pointer-events: none;
+    box-sizing: border-box;
+    z-index: 100;
 }

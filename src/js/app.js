@@ -1,6 +1,8 @@
 import GamePlay from './GamePlay';
+import GameController from './GameController';
 
 const gamePlay = new GamePlay();
 gamePlay.bindToDOM(document.querySelector('#game-container'));
-gamePlay.drawBoard();
-setInterval(() => { gamePlay.randomSpawn(gamePlay.getNewPosition()); }, 1000);
+
+const gameCtrl = new GameController(gamePlay);
+gameCtrl.init();
