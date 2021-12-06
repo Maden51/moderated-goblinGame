@@ -24,10 +24,29 @@ body {
     grid-row-gap: 2px;
 }
 
+.btn {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.controls {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cell {
     border: 1px solid black;
     width: var(--cell-size);
     height: var(--cell-size);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .goblin {

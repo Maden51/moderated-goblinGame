@@ -30,6 +30,15 @@ export default class GameController {
         this.goblin(num);
       }
     }, 1000);
+
+    this.gamePlay.addNewGameListener(this.onNewGameClick.bind(this));
+  }
+
+  onNewGameClick() {
+    this.scores = 0;
+    this.misses = 0;
+    this.charIndex = -1;
+    this.init();
   }
 
   onCellClick(index) {

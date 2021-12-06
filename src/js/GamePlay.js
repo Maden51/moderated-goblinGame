@@ -5,6 +5,7 @@ export default class GamePlay {
     this.boardEl = null;
     this.cells = [];
     this.cellClickListeners = [];
+    this.newGameListeners = [];
   }
 
   bindToDOM(container) {
@@ -17,6 +18,9 @@ export default class GamePlay {
   drawBoard() {
     this.checkBinding();
     this.container.innerHTML = `
+      <div class="controls">
+        <button data-id="action-restart" class="btn">New Game</button>
+      </div>
       <div class="board-container">
         <div data-id="board" class="board"></div>
       </div>
@@ -27,6 +31,8 @@ export default class GamePlay {
       <div class="cursor"></div>
       `;
 
+    this.newGameEl = this.container.querySelector('[data-id=action-restart]');
+    this.newGameEl.addEventListener('click', (e) => this.onNewGameClick(e));
     this.boardEl = this.container.querySelector('[data-id=board]');
     const cursor = document.querySelector('.cursor');
     const board = document.querySelector('.board');
@@ -46,8 +52,17 @@ export default class GamePlay {
     this.cells = Array.from(this.boardEl.children);
   }
 
+  addNewGameListener(callback) {
+    this.newGameListeners.push(callback);
+  }
+
   addCellClickListener(callback) {
     this.cellClickListeners.push(callback);
+  }
+
+  onNewGameClick(e) {
+    e.preventDefault();
+    this.newGameListeners.forEach((obj) => obj.call(null));
   }
 
   onCellClick(e) {
